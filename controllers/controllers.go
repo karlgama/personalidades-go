@@ -33,6 +33,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	json.NewDecoder(r.Body).Decode(&personalidade)
 	database.DB.Create(&personalidade)
 	json.NewEncoder(w).Encode(personalidade)
+	w.WriteHeader(http.StatusCreated)
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
